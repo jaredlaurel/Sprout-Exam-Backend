@@ -1,0 +1,39 @@
+version: "3.9"
+x-api-volumes:
+x-base-info: &backend
+  environment:
+    - PYTHONPATH=/usr/src
+    - LOG_LEVEL=debug
+    - DATABASE_URL="postgresql://postgres@db:5432/employee_management_dev"
+  links:
+    - "db:pgbouncer"
+  depends_on:
+    - db
+
+volumes:
+  db-data:
+
+services:
+  db:
+    container_name: employee_management_db
+    image: postgres:13.2-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: employee_management_dev
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+  employee-service:
+    <<: *backend
+    build: ./employee-service
+    volumes:
+      - ./employee-service/app:/server/app
+      - ./employee-service/tests:/server/tests
+      - ./db-migration/app/models:/server/app/adapters/database/models
+    ports:
+      - 8000:8000
