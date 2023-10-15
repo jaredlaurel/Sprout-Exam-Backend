@@ -19,3 +19,8 @@ make logs
 cd db-migration
 make migrate
 ```
+
+Access:
+```
+http://localhost:8000/docs/
+```
