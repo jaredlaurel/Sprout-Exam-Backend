@@ -4,8 +4,6 @@ from uuid import UUID
 
 from pydantic import BaseModel
 
-from app.utils.base_schema import PaginateModel
-
 
 class EmployeeBaseSchema(BaseModel):
     """
