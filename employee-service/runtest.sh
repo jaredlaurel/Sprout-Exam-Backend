@@ -6,5 +6,5 @@
 # sh runtests.sh tests/test_file.py -v                     # run single test module
 # sh runtests.sh tests/test_file.py -v -k test_case_name   # run single test case
 #
-docker-compose build {{service_name}}-service && \
-docker-compose run --rm {{service_name}}-service pytest "$@"
+docker-compose build employee-service && \
+docker-compose run --rm employee-service pytest "$@"

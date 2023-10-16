@@ -24,3 +24,10 @@ Access:
 ```
 http://localhost:8000/docs/
 ```
+
+### Unit Test
+
+Run:
+```shell
+sh employee-service/runtest.sh -v
+```
