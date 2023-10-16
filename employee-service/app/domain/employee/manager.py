@@ -49,7 +49,9 @@ class EmployeeManager:
         result = await self.__db_queries.get(id=employee_id)
         return {} if not result else EmployeeDBSchema.from_orm(result)
 
-    async def update_employee(self, employee_id: str, employee: EmployeeBaseSchema) -> bool:
+    async def update_employee(
+        self, employee_id: str, employee: EmployeeBaseSchema
+    ) -> bool:
         """Update employee
 
         Args:

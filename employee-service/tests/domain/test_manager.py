@@ -14,7 +14,6 @@ class TestEmployeeManager:
     @patch("app.adapters.database.employee.EmployeeQueries.get")
     @patch("app.adapters.database.employee.EmployeeQueries.create")
     async def test_create_employee(self, create, get, init) -> None:
-
         init.return_value = None
 
         # Test Success
@@ -31,7 +30,6 @@ class TestEmployeeManager:
     @patch("app.adapters.database.employee.EmployeeQueries.__init__")
     @patch("app.adapters.database.employee.EmployeeQueries.get_all")
     async def test_list_employees(self, get_all, init) -> None:
-
         init.return_value = None
 
         # Test with Value
@@ -49,7 +47,6 @@ class TestEmployeeManager:
     @patch("app.adapters.database.employee.EmployeeQueries.__init__")
     @patch("app.adapters.database.employee.EmployeeQueries.get")
     async def test_get_employee_by_id(self, get, init) -> None:
-
         init.return_value = None
 
         # Test with Value
@@ -67,24 +64,26 @@ class TestEmployeeManager:
     @patch("app.adapters.database.employee.EmployeeQueries.get")
     @patch("app.adapters.database.employee.EmployeeQueries.update")
     async def test_update_employee(self, update, get, init) -> None:
-
         init.return_value = None
 
         # Test Success
         update.return_value = True
         get.return_value = {"id": test_id}
-        result = await get_employee_manager().update_employee(test_id, EMPLOYEE_BASE_SCHEMA)
+        result = await get_employee_manager().update_employee(
+            test_id, EMPLOYEE_BASE_SCHEMA
+        )
         assert result is True
 
         # Test Failed
         update.return_value = False
-        result = await get_employee_manager().update_employee(test_id, EMPLOYEE_BASE_SCHEMA)
+        result = await get_employee_manager().update_employee(
+            test_id, EMPLOYEE_BASE_SCHEMA
+        )
         assert result is False
 
     @patch("app.adapters.database.employee.EmployeeQueries.__init__")
     @patch("app.adapters.database.employee.EmployeeQueries.delete")
     async def test_remove_employee(self, delete, init) -> None:
-
         init.return_value = None
 
         # Test Success

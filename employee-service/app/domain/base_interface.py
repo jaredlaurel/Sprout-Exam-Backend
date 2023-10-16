@@ -30,4 +30,3 @@ class BaseInterface(metaclass=ABCMeta):
     @abstractmethod
     async def delete_all(self) -> bool:
         raise NotImplementedError()
-

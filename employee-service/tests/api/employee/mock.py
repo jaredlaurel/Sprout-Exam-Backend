@@ -14,7 +14,7 @@ EMPLOYEE_SCHEMA = EmployeeDBSchema(
     email="test@test.com",
     number_of_leaves=15,
     benefits="Test Benefits",
-    type="Regular"
+    type="Regular",
 )
 
 

@@ -11,6 +11,7 @@ class EmployeeBaseSchema(BaseModel):
     """
     Class for Employee Base Schema
     """
+
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     email: Optional[str] = None

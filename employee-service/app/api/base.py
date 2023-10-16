@@ -18,6 +18,8 @@ api_router.include_router(
     tags=["employee"],
     # dependencies=[Depends(PermissionDependency([IsAuthenticated]))],
 )
+
+
 @api_router.get("/health-check")
 @cache()  # Will be cached indefinitely
 def health_check():
